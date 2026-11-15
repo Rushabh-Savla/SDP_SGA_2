@@ -9,9 +9,9 @@
 
 ## Repository Overview
 
-This repository demonstrates a complete, auditable Git version control workflow and test engineering design for **SDP SGA 2**, encompassing two core questions:
+This repository demonstrates an authentic Git version control workflow and test engineering design for **SDP SGA 2**, encompassing two core questions:
 
-1. **Question 1: Git & GitHub Workflow (10 Marks):** Local repository setup, feature branching, merging, `.gitignore` configuration, dual undo demonstrations (`git reset` and `git revert`), command documentation, and remote GitHub integration.
+1. **Question 1: Git & GitHub Workflow (10 Marks):** Local repository setup, feature branching, merging, `.gitignore` configuration, dual undo demonstrations (`git reset` local reflog audit and `git revert` public commit), command documentation, and remote GitHub integration.
 2. **Question 2: Test Case Design (10 Marks):** Formal test engineering design for a Login System covering 5 functional requirements through Equivalence Partitioning (EP), Boundary Value Analysis (BVA), and State Transition testing.
 
 ---
@@ -22,8 +22,8 @@ This repository demonstrates a complete, auditable Git version control workflow 
 SDP_SGA_2/
 ├── .git/                      # Local Git repository database
 ├── .gitignore                 # Exclusion rules for *.log and temp/ directory
-├── index.html                 # Application landing page with responsive styling
-├── about.html                 # Project information page with navigation bar
+├── index.html                 # Application landing page with responsive styling & #contact
+├── about.html                 # Project information page with bidirectional navigation
 ├── git_commands.txt           # Catalog of all 22 Git commands with explanations
 ├── README.md                  # Project overview and verification documentation
 └── temp/                      # Sample ignored directory (tested with temp/cache.tmp)
@@ -38,12 +38,13 @@ The repository contains genuine branching and merge history with non-fast-forwar
 - `65e93e9`: Initial commit adding `index.html` and `about.html`.
 - `b057cc8`: Second commit updating `about.html` with company bio and author information.
 - `b6f7dc4`: Feature branch commit on `feature` introducing responsive navigation and service cards.
-- `435227c`: Explicit merge commit merging `feature` into `main`.
+- `435227c`: Explicit merge commit merging `feature` into `main` (`--no-ff`).
 - `6923688`: Added `.gitignore` excluding `*.log` and `temp/` folder.
 - `52f5747`: Added `git_commands.txt` command documentation file.
 - `be22f5c`: Navigation rectification adding `#contact` section and bidirectional navigation.
 - `f06fab0`: Additional test commit for undo demonstration.
 - `7bcaa2d`: Public undo commit via `git revert HEAD --no-edit` reverting `f06fab0`.
+- `d424135`: Updated documentation and added `README.md`.
 
 ### 2. .gitignore Verification
 The `.gitignore` rules can be verified using `git check-ignore`:
@@ -62,22 +63,18 @@ Two distinct undo paradigms are verified:
 
 ---
 
-## Question 2: Login System Test Case Specification
+## Question 2: Login System Test Case Specification (14 Scenarios)
 
-| Test Case ID | Test Scenario | Input Data | Expected Output |
-| :--- | :--- | :--- | :--- |
-| **TC_01** | Valid Login (Nominal Case) | Username = "rushabh_user", Password = "SecurePass123", Click [Login] | Login successful. Session token issued; user redirected to Dashboard page (`/dashboard`); welcome banner displayed. |
-| **TC_02** | Edge Case &mdash; Empty Username | Username = "" (blank), Password = "Password@123", Click [Login] | Login fails. Inline error displayed: *"Username must not be empty."* Submission blocked; focus remains on Username input. |
-| **TC_03** | Edge Case &mdash; Empty Password | Username = "rushabh_user", Password = "" (blank), Click [Login] | Login fails. Inline error displayed: *"Password must be at least 6 characters long."* Submission blocked; focus set to Password input. |
-| **TC_04** | Edge Case &mdash; Both Fields Empty | Username = "", Password = "", Click [Login] | Login fails. Dual errors displayed: *"Username must not be empty."* and *"Password must be at least 6 characters long."* No network request sent. |
-| **TC_05** | Boundary Value &mdash; Password &lt; 6 Chars (N - 1) | Username = "rushabh_user", Password = "Ab123" (5 characters), Click [Login] | Login fails. Error message displayed: *"Password must be at least 6 characters long (5 characters provided)."* Password field highlighted in red. |
-| **TC_06** | Boundary Value &mdash; Password == 6 Chars (N) | Username = "rushabh_user", Password = "Pass01" (6 characters), Click [Login] | Login successful. Validation passes minimum length threshold; user is authenticated and redirected to Dashboard (`/dashboard`). |
-| **TC_07** | Invalid Scenario &mdash; Non-Existent Username | Username = "unregistered_99", Password = "ValidPass123", Click [Login] | Login fails. Error message displayed: *"Invalid username or password. Please verify your credentials and try again."* Password field cleared. |
-| **TC_08** | Invalid Scenario &mdash; 1st Failed Login Attempt | Username = "rushabh_user", Password = "WrongPass_1", Click [Login] | Login fails. Error message displayed: *"Invalid username or password. 2 attempts remaining before account lockout."* Failed counter increments to 1. |
-| **TC_09** | Invalid Scenario &mdash; 2nd Consecutive Failed Attempt | Username = "rushabh_user", Password = "WrongPass_2", Click [Login] | Login fails. Warning displayed: *"Invalid username or password. Warning: 1 attempt remaining before account lockout."* Failed counter increments to 2. |
-| **TC_10** | Account Lockout &mdash; 3rd Consecutive Failed Attempt | Username = "rushabh_user", Password = "WrongPass_3", Click [Login] | Login fails. Critical alert displayed: *"Your account has been locked due to 3 consecutive failed login attempts. Please contact support or reset password."* Account status updated to LOCKED. |
-| **TC_11** | Post-Lockout Behavior on Locked Account | Username = "rushabh_user", Password = "SecurePass123" (valid), Click [Login] | Login fails immediately. Error displayed: *"Access Denied: Account is currently locked. Authentication disabled. Please contact administrator to unlock."* |
-| **TC_12** | Counter Reset on Successful Login | Step 1: Wrong password (counter = 1)<br>Step 2: Correct password "SecurePass123", Click [Login] | Login successful on Step 2. User redirected to Dashboard; failed login counter automatically resets from 1 back to 0. Subsequent failures start at attempt 1. |
+The test suite covers the three inputs (**Username**, **Password**, **Login button**) and all five functional requirements (**FR-1** through **FR-5**) using Equivalence Partitioning (EP), Boundary Value Analysis (BVA), and State Transition testing.
+
+### Specification Assumptions & Test Account Fixtures
+- **Test Account Fixtures:** To ensure logical consistency across boundary tests, distinct accounts are used for tests requiring valid authentication:
+  - Account 1: `user_nominal` with registered valid password `"SecurePass123"` (nominal length 13 > 6 chars)
+  - Account 2: `user_bva_min` with registered valid password `"Pass01"` (exact minimum boundary length = 6 chars)
+  - Account 3: `user_bva_strong` with registered valid password `"DevSecure2026"` (length 13 chars)
+- **Security Attempt Counting:** Failed attempts are incremented only when authentication is evaluated (valid-format inputs submitted with mismatched credentials). Validation failures (empty fields or passwords < 6 chars) are blocked at the client/form layer and do not increment the security counter.
+- **Counter Reset:** Any valid login immediately resets the consecutive failed attempt counter to 0.
+- **Lockout Persistence:** Once locked after 3 consecutive failed attempts, all subsequent login attempts are rejected immediately, bypassing password verification until unlocked by an administrator.
 
 ---
 
