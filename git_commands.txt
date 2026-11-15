@@ -64,8 +64,9 @@ PART 1: COMMANDS ACTUALLY EXECUTED IN ASSIGNMENT WORKFLOW (STEPS 1 - 6)
     line number, and pattern that matched the queried file path.
 
 14. git reset HEAD~1
-    Undoes the most recent commit on the current branch while preserving all
-    file changes in the working directory as uncommitted modifications.
+    Undoes the most recent commit on the current branch (default mixed reset:
+    moves HEAD to HEAD~1 and resets index, leaving changes in the working tree
+    as unstaged modifications rather than producing a clean tree).
 
 15. git revert HEAD --no-edit
     Creates a new commit that records the exact inverse of a target commit,
