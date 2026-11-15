@@ -4,36 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SDP SGA 2 - Web Application</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; margin: 0; padding: 0; color: #333; background: #f8fafc; }
+        header { background: #1e293b; color: #fff; padding: 2rem 1.5rem; text-align: center; }
+        header h1 { margin: 0 0 0.5rem 0; font-size: 2rem; }
+        header p { margin: 0; color: #94a3b8; }
+        nav { background: #0f172a; padding: 0.75rem 1.5rem; }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        nav a { color: #f8fafc; text-decoration: none; font-weight: 500; }
+        nav a:hover { color: #38bdf8; }
+        main { max-width: 900px; margin: 2rem auto; padding: 0 1.5rem; }
+        section { background: #fff; padding: 1.5rem; border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 1.5rem; }
+        h2 { color: #0f172a; margin-top: 0; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        footer { background: #1e293b; color: #94a3b8; text-align: center; padding: 1.5rem; font-size: 0.9rem; }
+        .feature-list { list-style-type: square; padding-left: 1.5rem; }
+        .feature-list li { margin-bottom: 0.5rem; }
+    </style>
 </head>
 <body>
     <header>
         <h1>Welcome to SDP SGA 2 Web Application</h1>
         <p>A demonstration of modern software development practices and version control.</p>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
     </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     <main>
         <section id="intro">
             <h2>Project Overview</h2>
-            <p>This repository demonstrates Git branching, merging, and collaboration workflows.</p>
+            <p>This repository demonstrates Git branching, merging, and collaboration workflows for the Software Development Practice (SDP) course.</p>
         </section>
         <section id="features">
             <h2>Core Features</h2>
-            <ul>
-                <li>Feature Branch Isolation</li>
-                <li>Seamless Multi-branch Collaboration</li>
-                <li>Integrated Merge History</li>
+            <ul class="feature-list">
+                <li>Feature Branch Isolation (feature branch workflow)</li>
+                <li>Seamless Multi-branch Collaboration and Merging</li>
+                <li>Integrated Merge History with Non-Fast-Forward Commits</li>
+                <li>Production-grade .gitignore Configuration</li>
+                <li>Auditable Commit and Undo History (git reset &amp; git revert)</li>
             </ul>
+        </section>
+        <section id="contact">
+            <h2>Contact Information</h2>
+            <p>For questions or inquiries regarding this project implementation:</p>
+            <p><strong>Student / Author:</strong> Rushabh Savla</p>
+            <p><strong>Email:</strong> <a href="mailto:rvsavla05@gmail.com">rvsavla05@gmail.com</a></p>
+            <p><strong>GitHub Repository:</strong> <a href="https://github.com/Rushabh-Savla/SDP_SGA_2">https://github.com/Rushabh-Savla/SDP_SGA_2</a></p>
         </section>
     </main>
     <footer>
-        <p>&copy; 2026 Rushabh Savla. All rights reserved.</p>
+        <p>&copy; 2026 Rushabh Savla. All rights reserved. &bull; Software Development Practice</p>
     </footer>
 </body>
 </html>
