@@ -5,6 +5,7 @@ Student Name : Rushabh Savla
 Course       : Software Development Practice (SDP)
 Repository   : https://github.com/Rushabh-Savla/SDP_SGA_2
 Environment  : WSL Ubuntu (Linux) / Bash Terminal
+Audit Date   : November 2026
 ================================================================================
 
 1. git init
@@ -44,7 +45,7 @@ Environment  : WSL Ubuntu (Linux) / Bash Terminal
 
 10. git merge <branch-name> -m "<message>"
     Merges changes from the specified branch into the currently active branch,
-    combining commit histories and creating an explicit merge commit.
+    combining commit histories and creating an explicit merge commit with --no-ff.
 
 11. git log --graph --all --decorate --oneline
     Renders an ASCII graph representation of all branch histories and merge
@@ -54,23 +55,43 @@ Environment  : WSL Ubuntu (Linux) / Bash Terminal
     Displays commit history along with file modification statistics, showing
     which files changed and the number of insertions and deletions.
 
-13. git reset HEAD~1
+13. git check-ignore -v <path>
+    Verifies and debugs .gitignore patterns by reporting the exact rule file,
+    line number, and pattern that matched the queried file path.
+
+14. git reset HEAD~1
     Undoes the most recent commit on the current branch while preserving all
     file changes in the working directory as uncommitted modifications.
 
-14. git remote add <name> <url>
+15. git revert <commit> --no-edit
+    Creates a new commit that records the exact inverse of a target commit,
+    safely undoing changes on public branches without rewriting history.
+
+16. git reflog
+    Displays the chronological record of all HEAD reference movements,
+    allowing auditing, tracking, and recovery of commits across resets and checkouts.
+
+17. git remote add <name> <url>
     Links the local repository to a remote repository hosted on a service like
     GitHub under the designated remote alias (conventionally 'origin').
 
-15. git remote -v
+18. git remote -v
     Lists all configured remote repository connections along with their fetch
     and push URLs.
 
-16. git push -u <remote> <branch>
+19. git push -u <remote> <branch>
     Uploads local commits to the specified branch on the remote repository and
     sets the upstream tracking reference for future parameterless git push/pull.
 
-17. git branch -a
+20. git push <remote> <branch>
+    Pushes committed changes from the specified local branch to the matching
+    branch on the configured remote repository.
+
+21. git branch -a
     Lists all branches known to the local repository, including both local
     branches and remote-tracking references.
+
+22. git ls-remote <url>
+    Queries references, tags, and branch heads available on a remote repository
+    directly over the network without cloning or downloading objects.
 ================================================================================
