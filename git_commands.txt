@@ -1,0 +1,76 @@
+================================================================================
+                    GIT COMMANDS DOCUMENTATION - SDP SGA 2
+================================================================================
+Student Name : Rushabh Savla
+Course       : Software Development Practice (SDP)
+Repository   : https://github.com/Rushabh-Savla/SDP_SGA_2
+Environment  : WSL Ubuntu (Linux) / Bash Terminal
+================================================================================
+
+1. git init
+   Initializes a new, empty Git repository in the current working directory,
+   creating the hidden .git directory to track project version history.
+
+2. git status
+   Displays the current state of the working directory and staging area,
+   showing untracked files, tracked modifications, and staged changes.
+
+3. git add <file> / git add .
+   Stages file modifications or newly created files from the working directory
+   into the staging area (index) in preparation for the next commit.
+
+4. git commit -m "<message>"
+   Records a permanent snapshot of the staged changes into the local Git
+   repository history along with a descriptive commit message.
+
+5. git log --oneline
+   Displays the commit history in a concise single-line format showing each
+   commit's abbreviated SHA-1 hash and commit message.
+
+6. git diff <file>
+   Shows the exact line-by-line differences between the working directory and
+   the staging area or the most recent commit.
+
+7. git branch <branch-name>
+   Creates a new branch pointing to the current commit without automatically
+   switching to it.
+
+8. git branch
+   Lists all local branches in the repository, with an asterisk (*) highlighting
+   the currently checked-out branch.
+
+9. git checkout <branch-name> / git switch <branch-name>
+   Switches the working directory and HEAD pointer to the specified branch.
+
+10. git merge <branch-name> -m "<message>"
+    Merges changes from the specified branch into the currently active branch,
+    combining commit histories and creating an explicit merge commit.
+
+11. git log --graph --all --decorate --oneline
+    Renders an ASCII graph representation of all branch histories and merge
+    points across all branches in a compact, readable visual format.
+
+12. git log --stat
+    Displays commit history along with file modification statistics, showing
+    which files changed and the number of insertions and deletions.
+
+13. git reset HEAD~1
+    Undoes the most recent commit on the current branch while preserving all
+    file changes in the working directory as uncommitted modifications.
+
+14. git remote add <name> <url>
+    Links the local repository to a remote repository hosted on a service like
+    GitHub under the designated remote alias (conventionally 'origin').
+
+15. git remote -v
+    Lists all configured remote repository connections along with their fetch
+    and push URLs.
+
+16. git push -u <remote> <branch>
+    Uploads local commits to the specified branch on the remote repository and
+    sets the upstream tracking reference for future parameterless git push/pull.
+
+17. git branch -a
+    Lists all branches known to the local repository, including both local
+    branches and remote-tracking references.
+================================================================================
